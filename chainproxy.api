@@ -1,0 +1,15 @@
+type ExRates {
+	Name  string  `json:"name"`
+	Unit  string  `json:"unit"`
+	Value float64 `json:"value"`
+	Type  string  `json:"type"`
+}
+
+type ExRatesResponse {
+	Rates map[string]ExRates `json:"rates"`
+}
+
+service chainproxy-api {
+	@handler ExRatesHandler
+	get /chainproxy/ex-rates returns (ExRatesResponse);
+}
